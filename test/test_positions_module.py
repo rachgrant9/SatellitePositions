@@ -37,3 +37,53 @@ class Test():
 
         # Assert
         assert output == expected_result
+    
+    def test_convert_time(self):
+        # Arrange
+        time_string = "2024-01-15 10:30:00"
+        observer = SatelliteObserver()
+
+        # Act
+        result = observer.convert_time(time_string)
+
+        # Assert
+        assert isinstance(result, t.Time)
+
+    def test_convert_distance(self):
+        # Arrange
+        distance = 2000
+        observer = SatelliteObserver()
+
+        # Act
+        result = observer.convert_distance(distance)
+
+        # Assert
+        assert result == 2000000
+
+    def test_create_ground_station_location(self):
+        # Arrange
+        observer = SatelliteObserver(ground_station_lat=40.7128, ground_station_lon=74.0060)
+
+        # Act
+        result = observer.create_ground_station_location()
+
+        # Assert
+        assert result.lat.deg == 40.7128
+        assert result.lon.deg == 74.0060
+        assert isinstance(result, EarthLocation)
+
+    def test_is_altitude_within_range(self):
+        # Arrange
+        altitude_low = 10
+        altitude_high = 85
+        observer = SatelliteObserver(altitude_threshold_low=altitude_low, altitude_threshold_high=altitude_high)
+
+        # Test positive scenario
+        assert observer.is_altitude_within_range(50)
+        assert observer.is_altitude_within_range(10.1)
+        assert observer.is_altitude_within_range(84.9)
+
+        # Test negative scenario
+        assert not observer.is_altitude_within_range(5)
+        assert not observer.is_altitude_within_range(10)
+        assert not observer.is_altitude_within_range(85)
