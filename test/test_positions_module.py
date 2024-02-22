@@ -1,6 +1,6 @@
 import pytest
 import os
-from src.positions_module import load_satellite_positions
+from src.positions_module import *
 
 class Test():
 
@@ -16,3 +16,17 @@ class Test():
 
         # Assert
         assert len(positions) == 1440
+
+    #  Arrange
+    @pytest.mark.parametrize("ra, dec, observer, expected_altitude", [
+        (1, 1, 1, 2),
+        (2, 3, 2, 5),
+        (5, 5, 6, 10),
+        (-1, 1, 7, 0),
+    ])  
+    def test_convert_RA_Dec_To_Alt_Az_For_Observer(self, ra, dec, observer, expected_altitude):
+        # Act
+        calculated_altitude = convert_RA_Dec_To_Alt_Az_For_Observer(ra, dec, observer)
+
+        # Assert
+        assert calculated_altitude == expected_altitude
