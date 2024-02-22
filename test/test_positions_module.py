@@ -11,22 +11,29 @@ class Test():
         # Construct the file path
         file_path = os.path.join(data_folder, "code_test_data.csv")
 
+        observer = SatelliteObserver(data_folder=data_folder, csv_file=file_path)
+
         #  Act
-        positions = load_satellite_positions(file_path)
+        positions = observer.load_satellite_positions()
 
         # Assert
         assert len(positions) == 1440
 
-    #  Arrange
-    @pytest.mark.parametrize("ra, dec, observer, expected_altitude", [
-        (1, 1, 1, 2),
-        (2, 3, 2, 5),
-        (5, 5, 6, 10),
-        (-1, 1, 7, 0),
-    ])  
-    def test_convert_RA_Dec_To_Alt_Az_For_Observer(self, ra, dec, observer, expected_altitude):
+    def test_observe_satellite_position(self):
+        # Arrange
+        data_folder = './test_data'
+        csv = 'testing_data.csv'
+        gs_lattitude = 78.7199
+        gs_longitude = 20.3493
+        altitude_low = 34
+        altitude_high = 40
+
+        expected_result = ['1','2','3']
+
+        observer = SatelliteObserver(data_folder, csv, gs_lattitude, gs_longitude, altitude_low, altitude_high)
+        
         # Act
-        calculated_altitude = convert_RA_Dec_To_Alt_Az_For_Observer(ra, dec, observer)
+        output = observer.observe_satellite_position()
 
         # Assert
-        assert calculated_altitude == expected_altitude
+        assert output == expected_result
