@@ -1,4 +1,3 @@
-import pytest
 import os
 from src.positions_module import *
 
