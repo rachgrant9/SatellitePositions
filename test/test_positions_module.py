@@ -18,16 +18,17 @@ class Test():
         # Assert
         assert len(positions) == 1440
 
+    # TODO: get real test data from a reliable source so I can test my method properly.
     def test_observe_satellite_position(self):
         # Arrange
         data_folder = './test_data'
         csv = 'testing_data.csv'
-        gs_lattitude = 78.7199
-        gs_longitude = 20.3493
-        altitude_low = 34
-        altitude_high = 40
+        gs_lattitude = 41.3
+        gs_longitude = -74
+        altitude_low = -90
+        altitude_high = 90
 
-        expected_result = ['1','2','3']
+        expected_result = [{'time': '2012-07-12T23:00:00.000', 'altitude': -17.965120362818805}]
 
         observer = SatelliteObserver(data_folder, csv, gs_lattitude, gs_longitude, altitude_low, altitude_high)
         
@@ -77,6 +78,7 @@ class Test():
         altitude_high = 85
         observer = SatelliteObserver(altitude_threshold_low=altitude_low, altitude_threshold_high=altitude_high)
 
+        # Act & Assert
         # Test positive scenario
         assert observer.is_altitude_within_range(50)
         assert observer.is_altitude_within_range(10.1)
@@ -86,3 +88,6 @@ class Test():
         assert not observer.is_altitude_within_range(5)
         assert not observer.is_altitude_within_range(10)
         assert not observer.is_altitude_within_range(85)
+        assert not observer.is_altitude_within_range(-11)
+        assert not observer.is_altitude_within_range(-84)
+        assert not observer.is_altitude_within_range(-89)
