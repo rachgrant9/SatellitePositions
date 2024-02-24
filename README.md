@@ -32,8 +32,13 @@ I would have liked to follow a TDD style approach for this, especially to verify
 My program prints 631 times where the satellite is visible to the console.
 
 ### Running the solution:
+Clone and open the repository locally
 
 ```bash
+    # Start a Virtual Environment
+    python3 -m venv myenv
+
+    # Navigate to the src folder and run the module
     cd ./src
     python -m positions_module
 ```
