@@ -23,13 +23,13 @@ To do this I needed some test data where I could verify that the altitude return
 
 Unfortunately I struggled to find reliable RA, Dec, Distance, Time and Ground station data online that I could use to valdiate my solution. This is something that I would go back to the team and ask if they could help me source.
 
+Since I don't have complete validation data the test_observe_satellite_position() test is currently failing. I have added a TODO with some more information on this failing test.
+Leaving this test as failing for now is better practice than adding an ignore attribute to exclude it from the report.
+
 I would have liked to follow a TDD style approach for this, especially to verify that the altitude output by my code is correct but I didn't have the testing data available to get started with this initially.
 
 ## Answer
-My program prints 631 times where the satellite is visible to the console. Unfortunately I do not have full confidence in this solution as I was unable to validate my results.
-
-Since I don't have complete validation data the test_observe_satellite_position() test is currently failing. I have added a TODO with some more information on this failing test.
-Leaving this test as failing for now is a better practice than adding an ignore attribute to exclude it from the report.
+My program prints 631 times where the satellite is visible to the console.
 
 ### Running the solution:
 
