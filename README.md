@@ -28,7 +28,7 @@ Leaving this test as failing for now is better practice than adding an ignore at
 
 I would have liked to follow a TDD style approach for this, especially to verify that the altitude output by my code is correct but I didn't have the testing data available to get started with this initially.
 
-## Github Actions
+## GitHub Actions
 As an aside, I wanted to try using Pylint in GitHub Actions as I haven't used this CI/CD before interface before.
 
 I created a pylint task in .github/workflows/pylint.yml
