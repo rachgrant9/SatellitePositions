@@ -18,9 +18,9 @@ class Test():
         # Assert
         assert len(positions) == 1440
 
-    # TODO: get real test data from a reliable source so I can test my method properly.
-    # This test data is based on the M33 example in the Astropy docs but I do not have the distance in kms (since it is so large) to use this data properly. This test is currently failing because of this.
-    #  See https://docs.astropy.org/en/stable/generated/examples/coordinates/plot_obs-planning.html
+    '''TODO: get real test data from a reliable source so I can test my method properly.
+    This test data is based on the M33 example in the Astropy docs but I do not have the distance in kms (since it is so large) to use this data properly. This test is currently failing because of this.
+    See https://docs.astropy.org/en/stable/generated/examples/coordinates/plot_obs-planning.html'''
     def test_observe_satellite_position(self):
         # Arrange
         data_folder = './test/test_data'
