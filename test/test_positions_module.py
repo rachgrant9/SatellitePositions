@@ -19,16 +19,18 @@ class Test():
         assert len(positions) == 1440
 
     # TODO: get real test data from a reliable source so I can test my method properly.
+    # This test data is based on the M33 example in the Astropy docs but I do not have the distance in kms (since it is so large) to use this data properly. This test is currently failing because of this.
+    #  See https://docs.astropy.org/en/stable/generated/examples/coordinates/plot_obs-planning.html
     def test_observe_satellite_position(self):
         # Arrange
-        data_folder = './test_data'
+        data_folder = './test/test_data'
         csv = 'testing_data.csv'
         gs_lattitude = 41.3
         gs_longitude = -74
         altitude_low = -90
         altitude_high = 90
 
-        expected_result = [{'time': '2012-07-12T23:00:00.000', 'altitude': -17.965120362818805}]
+        expected_result = [{'time': '2012-07-12T23:00:00.000', 'altitude': 0.13}]
 
         observer = SatelliteObserver(data_folder, csv, gs_lattitude, gs_longitude, altitude_low, altitude_high)
         
