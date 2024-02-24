@@ -2,7 +2,7 @@ import os
 import csv
 from astropy import units as u
 from astropy import time as t
-from astropy.coordinates import SkyCoord, AltAz, EarthLocation, ICRS
+from astropy.coordinates import SkyCoord, AltAz, EarthLocation, GCRS
 DATA_FOLDER = '../data'
 CSV_FILE = 'code_test_data.csv'
 GROUND_STATION_LAT = 78.7199
@@ -59,7 +59,7 @@ class SatelliteObserver:
 
     def create_skycoord(self, position):
         """Create SkyCoord object from satellite position."""
-        return SkyCoord(position['RA']*u.deg, position['Dec']*u.deg, distance=position['Distance'], frame=ICRS)
+        return SkyCoord(position['RA']*u.deg, position['Dec']*u.deg, distance=position['Distance'], frame=GCRS)
 
     def transform_to_altaz(self, skycoord, time, ground_station):
         """Transform SkyCoord object to AltAz coordinates."""
@@ -77,3 +77,12 @@ class SatelliteObserver:
                 observations.append({"time": position['time'], "altitude": altitude_value})
         
         return observations
+
+def main():
+    observer = SatelliteObserver()
+    observations = observer.observe_satellite_position()
+    for observation in observations:
+        print(f"Time: {observation['time']}")
+
+if __name__ == "__main__":
+    main()
