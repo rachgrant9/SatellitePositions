@@ -28,6 +28,15 @@ Leaving this test as failing for now is better practice than adding an ignore at
 
 I would have liked to follow a TDD style approach for this, especially to verify that the altitude output by my code is correct but I didn't have the testing data available to get started with this initially.
 
+## Github Actions
+As an aside, I wanted to try using Pylint in GitHub Actions as I haven't used this CI/CD before interface before.
+
+I created a pylint task in .github/workflows/pylint.yml
+
+This now runs on every push to main and outputs a score of the code quality.
+
+This was just a bit of a Proof of Concept exercise but I thought it was interesting to include.
+
 ## Answer
 My program prints 631 times where the satellite is visible to the console.
 
