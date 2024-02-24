@@ -23,7 +23,6 @@ To do this I needed some test data where I could verify that the altitude return
 
 Unfortunately I struggled to find reliable RA, Dec, Distance, Time and Ground station data online that I could use to valdiate my solution. This is something that I would go back to the team and ask if they could help me source.
 
-## Improvements
 I would have liked to follow a TDD style approach for this, especially to verify that the altitude output by my code is correct but I didn't have the testing data available to get started with this initially.
 
 ## Answer
